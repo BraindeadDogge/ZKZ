@@ -3,22 +3,32 @@
     <v-navigation-drawer
       v-model="drawer"
       app
+      temporary
+      color="yellow lighten-5"
     >
       <v-list dense>
-        <v-list-item link>
+        <v-list-item link @click="$vuetify.goTo('#main')">
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title>Главная</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link @click="$vuetify.goTo('#info')">
+          <v-list-item-action>
+            <v-icon>mdi-alpha-i-circle-outline</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Информация</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link @click="$vuetify.goTo('#contact')"> 
           <v-list-item-action>
             <v-icon>mdi-contact-mail</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
+            <v-list-item-title>Контакты</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -26,75 +36,87 @@
 
     <v-app-bar
       app
-      color="indigo"
-      dark
+      color="yellow lighten-4"
+      light
       right
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer></v-spacer>
-      <v-toolbar-title>ИНЖЕНЕРНОЕ БЮРО "КрахмалоПродукты"</v-toolbar-title>
+      <v-toolbar-title><strong>ИНЖЕНЕРНОЕ БЮРО "КрахмалоПродукты"</strong></v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
 
     <v-content>
+      <Carouselka id="main"></Carouselka>
       <v-container
-        class="fill-height"
         fluid
+        style="padding-bottom: 0px;"
       >
         <v-row
           align="center"
           justify="center"
         >
           <v-col class="text-center">
-            <v-tooltip left>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  :href="source"
-                  icon
-                  large
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn>
-              </template>
-              <span>Source</span>
-            </v-tooltip>
-
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  icon
-                  large
-                  href="https://codepen.io/johnjleider/pen/zgxeLQ"
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-codepen</v-icon>
-                </v-btn>
-              </template>
-              <span>Codepen</span>
-            </v-tooltip>
+            <Carto4ka id="info" style="margin-top: -55px; margin-bottom: 25px"/>
+            <Paralax1 style="min-height: 100vh; padding-left: 10vw; padding-right: 10vw; margin-left: -13px; margin-right: -13px; display: flex; align-items: center"><Carta1/></Paralax1>
+            <Paralax2 style="min-height: 100vh; padding-left: 10vw; padding-right: 10vw; margin-left: -13px; margin-right: -13px; display: flex; align-items: center"><Carta2/></Paralax2>
           </v-col>
         </v-row>
       </v-container>
+
+      <v-footer
+        dark
+        padless
+        id="contact"
+        style="margin-top: -13px;"
+      >
+        <v-card
+          flat
+          tile
+          class="grey darken-4 white--text text-center"
+        >
+
+          <v-card-text class="white--text pt-0" style="width: 100vw">
+          <br>
+          +79169009119 <br>
+          +79162312870 <br>
+          KRAHMALPRODUCT@GMAIL.COM <br>
+          </v-card-text>
+
+          <v-divider></v-divider>
+
+          <v-card-text class="white--text">
+            2019 — <strong>Инженерное Бюро "КрахмалоПродукты"</strong>
+          </v-card-text>
+        </v-card>
+      </v-footer>
+
     </v-content>
-    <v-footer
-      color="indigo"
-      app
-    >
-      <span class="white--text">&copy; 2019</span>
-    </v-footer>
   </v-app>
 </template>
 
 <script>
+  import Carouselka from '@/components/Carouselka.vue'
+  import Carto4ka from '@/components/Carto4ka.vue'
+  import Carta1 from '@/components/Carta1.vue'
+  import Carta2 from '@/components/Carta2.vue'
+  import Paralax1 from '@/components/Paralax1.vue'
+  import Paralax2 from '@/components/Paralax2.vue'
+
   export default {
+    components: {
+      Carouselka,
+      Carto4ka,
+      Carta1,
+      Carta2,
+      Paralax1,
+      Paralax2
+    },
     props: {
       source: String,
     },
     data: () => ({
-      drawer: null,
+      drawer: false,
     }),
   }
 </script>

@@ -42,7 +42,7 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer></v-spacer>
-      <v-toolbar-title><strong>ИНЖЕНЕРНОЕ БЮРО "КрахмалоПродукты"</strong></v-toolbar-title>
+      <v-toolbar-title style="white-space: nowrap"><strong>Инженерное Бюро Крахмалопродукты</strong></v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
 
@@ -78,15 +78,16 @@
 
           <v-card-text class="white--text pt-0" style="width: 100vw">
           <br>
-          +79169009119 <br>
-          +79162312870 <br>
+          +7 (916) 900-91-19 <br>
+          +7 (916) 231-28-70 <br>
           KRAHMALPRODUCT@GMAIL.COM <br>
           </v-card-text>
 
           <v-divider></v-divider>
 
           <v-card-text class="white--text">
-            2019 — <strong>Инженерное Бюро "КрахмалоПродукты"</strong>
+            <span >2019 — <strong>Инженерное Бюро "Крахмалопродукты"</strong></span>
+            <AGtag style="margin: 13px 0 2px 0"/>
           </v-card-text>
         </v-card>
       </v-footer>
@@ -102,6 +103,7 @@
   import Carta2 from '@/components/Carta2.vue'
   import Paralax1 from '@/components/Paralax1.vue'
   import Paralax2 from '@/components/Paralax2.vue'
+  import AGtag from '@/components/AGtag.vue'
 
   export default {
     components: {
@@ -110,7 +112,8 @@
       Carta1,
       Carta2,
       Paralax1,
-      Paralax2
+      Paralax2,
+      AGtag
     },
     props: {
       source: String,
